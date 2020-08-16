@@ -69,7 +69,7 @@ public class HappyPath {
 	
 	@Test
 	public void phonePath() throws InterruptedException {
-		driver.get("https://action.benjerry.com/lh92ba9");
+		//driver.get("https://action.benjerry.com/lh92ba9");
 		
 		driver.findElement(By.xpath("//li[@class='call-nav-list-item']")).click();
 		Thread.sleep(2000);
@@ -77,6 +77,7 @@ public class HappyPath {
 		WebElement address1 = driver.findElement(By.id("input-address1"));
 		WebElement phone = driver.findElement(By.id("input-phone"));
 		WebElement findLeg = driver.findElement(By.xpath("//fieldset[@class='p2a-fieldset-submit']/button"));
+		//WebElement findLeg = driver.findElement(By.xpath("//*[@id=\"p2a-campaign-container\"]/div/main/section[2]/form/fieldset[1]/button"));
 		
 		address1.sendKeys("321");
 		Thread.sleep(1000);
@@ -87,7 +88,19 @@ public class HappyPath {
 		
 		findLeg.click();
 		
+		WebElement unavailable = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("p2a-restricted-error")));
 		
+		System.out.println(unavailable.isDisplayed());
+		Assert.assertTrue(unavailable.isDisplayed());
+		driver.quit();
+	}
+	
+	@Test
+	public void messageBoxDisplayed() {
+		driver.get("https://action.benjerry.com/lh92ba9");
+		driver.findElement(By.xpath("//li[@class='email-nav-list-item']")).click();
 		
+		WebElement messageBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("legislator-message-textarea")));
+		Assert.assertTrue(messageBox.isDisplayed());
 	}
 }

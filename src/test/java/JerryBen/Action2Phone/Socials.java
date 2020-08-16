@@ -29,7 +29,7 @@ public class Socials {
 		wait = new WebDriverWait (driver, 10);
 	}	
 	
-	/*@Test
+	@Test
 	public void socialMedia() {
 		driver.get("https://action.benjerry.com/lh92ba9");
 		
@@ -48,7 +48,7 @@ public class Socials {
 		Assert.assertFalse(url.contains("twitter"));
 		
 		driver.quit();
-	}*/
+	}
 	
 	@Test
 	public void openSocials() {
